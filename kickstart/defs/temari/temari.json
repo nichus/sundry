@@ -1,0 +1,13 @@
+{
+  "hostname": "temari",
+  "provision": {
+    "flags": true
+  },
+  "machine_type": "B10:SDE:Linux Desktop",
+  "site": "sde",
+  "run_list": [
+    "Base_RHEL_64_Workstation",
+    "App_Linux_Workstation",
+    "RHEL_AntiVirus"
+  ]
+}
