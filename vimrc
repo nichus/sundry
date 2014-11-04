@@ -104,6 +104,9 @@ set textwidth=0
 " Disable the mouse, we aren't friends
 "set mouse=a
 
+" If vim was called with multiple file arguments, split those into windows
+silent sba
+
 " Add <> to the list of matched characters
 set matchpairs+=<:>
 
