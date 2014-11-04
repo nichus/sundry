@@ -139,6 +139,7 @@ imap <F1> <ESC>
 
 " During an svn edit, display a split window with the diff enclosed
 map <F9> :new<CR>:read !svn diff<CR>:set syntax=diff buftype=nofile<CR>gg
+map <F10> :let difffile=expand('%')<CR>:new<CR>:read '!git diff --cached '.difffile<CR>:set syntax=diff buftype=nofile<CR>gg
 
 noremap gf gf`"
 noremap <C-^> <C-^>`" 
