@@ -125,9 +125,20 @@ set smartcase
 " Don't resize all open windows when I split in a new window
 set noequalalways
 
-" Configure folding to use markers, and be fully folded on file open
-set foldmethod=marker
-set foldlevel=0
+" Configure folding to use syntax, override on a filetype basis if desired
+set foldmethod=syntax
+" Leave top level fold, unfolded on file open, so some context is available
+set foldlevel=1
+" Don't create folds deeper than 3 levels, might still need some tweaking.
+set foldnestmax=3
+
+" Enable syntax based folding for the following filetypes
+let javaScript_fold=1
+let perl_fold=1
+let php_folding=1
+let ruby_fold=1
+let sh_fold_enabled=1
+let xml-syntax_folding=1
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 " Section 5: Keymappings
