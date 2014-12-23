@@ -1,0 +1,86 @@
+#!/usr/bin/env ruby
+
+libs = %W(
+            #{File.dirname(__FILE__)}/lib/mrsh/mrsh_machine.rb
+            #{File.dirname(__FILE__)}/../lib/mrsh_machine.rb
+          )
+
+libs.each do |lib|
+  if File.exists?(lib) then
+    require lib
+    break
+  end
+end
+
+require 'thread'
+require 'getoptlong'
+require 'ostruct'
+
+settings = Settings.new
+
+hosts       = settings.loadSystems
+maxthreads  = [settings.max_threads,hosts.length].min
+threads     = Array.new
+
+orig_hosts  = hosts
+
+puts "\n"
+
+if hosts.empty?
+  puts "No systems match requirements"
+  exit
+end
+
+Signal.trap("QUIT") do
+  puts
+  puts "Thread Report:"
+  t = Time.now
+  threads.each_with_index do |thr,i|
+    printf("  Thread: %d - Host: %-15s - %0.2f seconds\n", i, thr[:hosts].hostname, (t - thr[:start]))
+  end
+  puts
+end
+
+reporter = Reporter.new(settings)
+
+loop do
+  while (hosts.size > 0 or threads.size > 0) do
+    if (hosts.size > 0 and (threads.size < maxthreads)) then
+      host = hosts.shift
+      
+      thread = Thread.new(host) do |host|
+        Thread.current[:start]      = Time.now
+        Thread.current[:host]       = host
+        
+        machine = Machine.new(host,settings)
+        machine.process
+        Thread.current[:end]        = Time.now
+        Thread.current[:duration]   = Thread.current[:end] - Thread.current[:start]
+      end
+      threads.push(thread)
+    end
+    
+    threads.each do |thr|
+      if (thr.status = false) or (thr.status.nil?)
+        host          = thr[:host]
+        host.duration = thr[:duration]
+        threads.delete(thr)
+        
+        reporter.report(host)
+      end
+      
+      if (threads.size == maxthreads) then
+        sleep(0.05)
+      end
+    end
+  end
+  
+  if (settings.repeat)
+    hosts = orig_hosts
+    reporter.loop
+  else
+    break
+  end
+end
+
+exit(0)
