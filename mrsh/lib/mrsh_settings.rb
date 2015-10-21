@@ -83,7 +83,7 @@ class Settings
         @ansi               = false
       when '--exclude-quiet'
         @data.exclude_quiet = true
-      when --output-path'
+      when '--output-path'
         if arg.empty? then
           @output_path = "/tmp/mrsh.%s.%d" % [ time.strftime("%Y%m%d"), Process.pid ]
         else
@@ -131,3 +131,4 @@ class Settings
       puts "- Sending all output to files under: #{@output_path}/"
     end
   end
+end
