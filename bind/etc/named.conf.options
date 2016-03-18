@@ -1,0 +1,42 @@
+
+options {
+  directory "/var/named";
+  version "unimportant";
+  allow-transfer {"none";};
+  // Allow clients in the 192.168.0.0/24 and 192.168.1.0/24 networks to query the local dns
+  allow-recursion {192.168.0.0/23;};
+};
+
+logging {
+  channel named_log {
+    file "/var/log/named/named.log" versions 10 size 2m;
+    severity info;
+    print-severity yes;
+    print-time yes;
+    print-category yes;
+  };
+  category default {
+    named_log;
+  };
+};
+
+zone "." {
+  type hint;
+  file "root.servers";
+};
+
+zone home.icebergh.us IN {
+  type master;
+  file "forward/home.icebergh.us.db";
+  allow-transfer {none;};
+}
+
+zone "0.168.192.in-addr.arpa" in {
+  type master;
+  file "reverse/192.168.0.db";
+};
+
+zone "1.168.192.in-addr.arpa" in {
+  type master;
+  file "reverse/192.168.1.db";
+};

@@ -1,0 +1,21 @@
+$TTL 2d
+$ORIGIN home.icebergh.us.
+@			IN	SOA	ns.home.icebergh.us. orien@icebergh.us. (
+				2016031801
+				12h	    ; refresh interval
+				15m	    ; update retry
+				3w	    ; expiry
+				3h	    ; minimum
+			)
+
+			IN	NS		ns.home.icebergh.us.
+			IN	MX	10	mail.icebergh.us.
+
+gateway			IN	A		192.168.0.1
+erl			IN	CNAME		gateway.home.icebergh.us.
+
+beast			IN	A		192.168.0.20
+ns			IN	CNAME		beast.home.icebergh.us.
+orihime			IN	A		192.168.0.21
+
+

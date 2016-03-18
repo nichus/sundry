@@ -1,0 +1,18 @@
+$TTL 2d
+$ORIGIN 0.168.192.in-addr.arpa.
+@			IN	SOA	ns.home.icebergh.us. orien@icebergh.us. (
+				2016031801
+				12h	    ; refresh interval
+				15m	    ; update retry
+				3w	    ; expiry
+				3h	    ; minimum
+			)
+
+			IN	NS		ns.home.icebergh.us.
+
+1			IN	PTR		gateway.home.icebergh.us.
+
+20			IN	PTR		beast.home.icebergh.us.
+21			IN	PTR		orihime.home.icebergh.us.
+
+
