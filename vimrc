@@ -105,7 +105,10 @@ set textwidth=0
 "set mouse=a
 
 " If vim was called with multiple file arguments, split those into windows
-silent sba
+if &diff
+else
+  silent sba
+endif
 
 " Add <> to the list of matched characters
 set matchpairs+=<:>
@@ -138,7 +141,7 @@ let perl_fold=1
 let php_folding=1
 let ruby_fold=1
 let sh_fold_enabled=1
-let xml-syntax_folding=1
+let xml_syntax_folding=1
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 " Section 5: Keymappings
