@@ -6,15 +6,15 @@ function qi3ber2() {
   
   RETCODE="\$( printf "%3s" \$CODE )"
   
-  UL=""
-  UR=""
-  MID=""
-  ML=""
-  MR=""
-  LL=""
-  LR=""
+  UL="┌"
+  UR="┐"
+  MID="─"
+  ML="┤"
+  MR="├"
+  LL="└"
+  LR="┘"
   
-  LINEONE="${Theme[0]}${UL}${MID}${ML} ${Theme[3]}\u${Theme[1]}@${Theme[4]}\h${ResetColours}:${Theme[7]}$TTY}${Theme[0]} ${MR}${UR}"
+  LINEONE="${Theme[0]}${UL}${MID}${ML} ${Theme[3]}\u${Theme[1]}@${Theme[4]}\h${ResetColours}:${Theme[7]}${TTY}${Theme[0]} ${MR}${UR}"
   LINETWO="${Theme[0]}${MR}${MID}${ML} ${Theme[6]}$$${ResetColours}:${Theme[7]}${LOADAVG}${Theme[0]} @ ${Theme[8]}${DATE}${Theme[0]} ${MR}${ML} ${Theme[5]}\w${Theme[0]} ${MR}${UR}"
   LINETHR="${Theme[0]}${LL}${MID}${ML} ${Theme[2]}\! ${Theme[9]}${RETCODE}${Theme[0]} ${MR}${UR}"
   
