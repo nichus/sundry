@@ -1,0 +1,114 @@
+------------------------------
+Option 1
+------------------------------
+virt-install –connect qemu:///system –name centos62dfltnogui –ram=1024 –vcpus=1 –disk path=/ssd1vmimages/centos62dfltnogui.img,size=12 –network bridge:br0 –graphics none –location=/var/www/html/centos62i386/ –extra-args “ks=http://10.0.0.12/vm.ks console=ttyS0”
+
+# Generates:
+<domain type=’kvm’>
+<name>centos62dfltnogui</name>
+<uuid>8b2263db-960d-cf15-02f2-70823460878e</uuid>
+<memory>1048576</memory>
+<currentMemory>1048576</currentMemory>
+<vcpu>1</vcpu>
+<os>
+<type arch=’x86_64′ machine=’rhel6.2.0′>hvm</type>
+<boot dev=’hd’/>
+</os>
+<features>
+<acpi/>
+<apic/>
+<pae/>
+</features>
+<clock offset=’utc’/>
+<on_poweroff>destroy</on_poweroff>
+<on_reboot>restart</on_reboot>
+<on_crash>restart</on_crash>
+<devices>
+<emulator>/usr/libexec/qemu-kvm</emulator>
+<disk type=’file’ device=’disk’>
+<driver name=’qemu’ type=’raw’ cache=’none’/>
+<source file=’/ssd1vmimages/centos62dfltnogui.img’/>
+<target dev=’vda’ bus=’virtio’/>
+<address type=’pci’ domain=’0x0000′ bus=’0x00′ slot=’0x04′ function=’0x0’/>
+</disk>
+<interface type=’bridge’>
+<mac address=’52:54:00:98:e0:1e’/>
+<source bridge=’br0’/>
+<model type=’virtio’/>
+<address type=’pci’ domain=’0x0000′ bus=’0x00′ slot=’0x03′ function=’0x0’/>
+</interface>
+<serial type=’pty’>
+<target port=’0’/>
+</serial>
+<console type=’pty’>
+<target type=’serial’ port=’0’/>
+</console>
+<input type=’tablet’ bus=’usb’/>
+<memballoon model=’virtio’>
+<address type=’pci’ domain=’0x0000′ bus=’0x00′ slot=’0x05′ function=’0x0’/>
+</memballoon>
+</devices>
+</domain>
+
+------------------------------
+Option 2
+------------------------------
+virt-install \
+    -n centos \
+    -r 2048 \
+    --vcpus=1 \
+    --os-variant=rhel5.4 \
+    --accelerate \
+    -v \
+    -w bridge:br0 \
+    -w bridge:br1 \
+    --disk path=/emc/kvm/centos.img,size=100 \
+    -l http://mirrors.nixcraft.in/centos/5.5/os/x86_64/ \
+    -nographics \
+    -x "ks=http://10.10.21.3/static/ks.cfg ksdevice=eth0 ip=10.10.21.76 netmask=255.255.255.240 dns=10.10.21.1 gateway=10.10.21.100"
+
+Matches kickstart file:
+
+auth  --useshadow  --enablemd5
+bootloader --location=mbr
+zerombr
+clearpart --all --initlabel
+text
+firewall --enabled --port=22:tcp
+firstboot --disable
+keyboard us
+network --device eth0 --bootproto static --ip 10.10.21.76 --netmask 255.255.255.240 --gateway 10.10.21.100 --nameserver 10.10.21.1,10.10.21.2 --noipv6
+network --device eth1 --bootproto static --ip 123.1.2.6 --netmask 255.255.255.240 --gateway 123.1.2.100 --nameserver 10.10.21.1,10.10.21.2 --hostname centos.nixcraft.in --noipv6
+lang en_US
+logging --level=info
+url --url=http://mirrors.nixcraft.in/centos/5.5/os/x86_64/ 
+reboot
+rootpw --iscrypted $1$somepassword
+selinux --enforcing
+skipx
+timezone  America/New_York
+install
+part / --bytes-per-inode=4096 --fstype="ext3" --grow --size=1
+part swap --recommended
+%packages
+@core
+--nobase
+%post
+(
+ echo '10.0.0.0/8 via 10.10.21.100' > /etc/sysconfig/network-scripts/route-eth0
+ sed -i 's/LABEL=\//& console=ttyS0/' /etc/grub.conf
+ echo 'S0:12345:respawn:/sbin/agetty ttyS0 115200' >> /etc/inittab
+ echo "ttyS0" >> /etc/securetty
+ echo 'IPV6INIT=no' >> /etc/sysconfig/network
+ echo 'install ipv6 /bin/true' >> /etc/modprobe.conf
+ ) 1>/root/post_install.log 2>&1
+
+------------------------------
+Option 3
+------------------------------
+sudo virt-install -n virt64_01 -r 8192 \
+       --disk path=/media/newhd/virt64_01.img,bus=virtio,size=50 \
+       -c ubuntu-14.04.1-server-amd64.iso \
+       --network bridge=br0,model=virtio,mac=52:54:00:b2:cb:b0 \
+       --network bridge=br1,model=virtio \
+       --video=vmvga --graphics vnc,listen=0.0.0.0 --noautoconsole -v --vcpus=4
