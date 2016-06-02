@@ -1,0 +1,28 @@
+dn: uid={{ username }},ou=people,dc=itap,dc=com
+changetype: add
+objectclass: person
+objectclass: inetorgperson
+objectclass: organizationalperson
+objectclass: posixaccount
+objectclass: shadowaccount
+objectclass: account
+objectclass: top
+uid: {{ username }}
+userpassword: {{ password }}
+givenname: {{ first }}
+sn: {{ last }}
+homedirectory: /home/{{ username }}
+mail: {{ email }}
+l: {{ site }}
+uidnumber: {{ uid }}
+gidnumber: {{ gid }}
+displayname: {{ fullname }}
+gecos: {{ fullname }}
+cn: {{ fullname }}
+description: {{ fullname }}
+manager: {{ manager }}
+telephonenumber: {{ phone }}
+o: {{ company }}
+loginshell: {{ shell }}
+passwordExpirationTime: {{ expiration }}
+
