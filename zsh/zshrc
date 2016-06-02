@@ -5,7 +5,7 @@ export ZSH=/home/ovandenb/.zsh/oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="fishy"
+ZSH_THEME="qi3ber2"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -51,7 +51,7 @@ HISTFILE="$ZDOTDIR/.zsh_history"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(sudo systemd themes tmux todo zsh_reload)
-plugins=(ansible sudo systemd themes tmux todo web-search zsh_reload)
+plugins=(ansible sudo systemd themes tmux todo vi-mode web-search zsh_reload)
 
 # User configuration
 ZSH_TMUX_AUTOSTART=false
@@ -95,3 +95,7 @@ export EDITOR="vim"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 export PROMPT_EOL_MARK="⏎"
+export LESS='-FRX'
+
+unsetopt share_history
+unsetopt hist_verify
