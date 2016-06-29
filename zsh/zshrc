@@ -56,7 +56,7 @@ HISTFILE="$ZDOTDIR/.zsh_history"
 plugins=(ansible sudo systemd themes todo vi-mode web-search zsh_reload)
 
 if type -p tmux >/dev/null; then
-  plugins += tmux
+  plugins+=tmux
 fi
 
 # User configuration
