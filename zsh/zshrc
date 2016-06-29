@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/ovandenb/.zsh/oh-my-zsh
+# Path to my omz custom directory
+export ZSH_CUSTOM=$ZDOTDIR/custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -51,7 +53,11 @@ HISTFILE="$ZDOTDIR/.zsh_history"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(sudo systemd themes tmux todo zsh_reload)
-plugins=(ansible sudo systemd themes tmux todo vi-mode web-search zsh_reload)
+plugins=(ansible sudo systemd themes todo vi-mode web-search zsh_reload)
+
+if type -p tmux >/dev/null; then
+  plugins += tmux
+fi
 
 # User configuration
 ZSH_TMUX_AUTOSTART=false
@@ -99,3 +105,9 @@ export LESS='-FRX'
 
 unsetopt share_history
 unsetopt hist_verify
+
+bindkey '^k' kill-line
+bindkey '^u' kill-whole-line
+bindkey '^y' yank
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
