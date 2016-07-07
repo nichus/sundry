@@ -107,7 +107,7 @@ unsetopt share_history
 unsetopt hist_verify
 
 bindkey '^k' kill-line
-bindkey '^u' kill-whole-line
+bindkey '^u' backward-kill-line
 bindkey '^y' yank
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
