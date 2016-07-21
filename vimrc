@@ -10,7 +10,10 @@ execute pathogen#infect()
 " * https://github.com/chase/vim-ansible-yaml.git
 " * https://github.com/airblade/vim-gitgutter
 " * https://github.com/bling/vim-airline
+" * https://github.com/vim-airline/vim-airline-themes
 " * https://github.com/pangloss/vim-javascript
+" * https://github.com/tpope/vim-surround
+" * https://github.com/scrooloose/syntastic
 "
 " Standalone colorschemes used:
 " * https://github.com/jnurmine/Zenburn.git
@@ -39,4 +42,6 @@ set comments+=fb:*
 colorscheme zenburn
 
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+
 let g:ansible_attribute_highlight = "ab"
