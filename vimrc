@@ -7,7 +7,7 @@ execute pathogen#infect()
 " * git://github.com/tpope/vim-git.git
 " * https://github.com/tpope/vim-sensible.git
 " * https://github.com/rust-lang/rust.vim.git
-" * https://github.com/chase/vim-ansible-yaml.git
+" * https://github.com/pearofducks/ansible-vim.git
 " * https://github.com/airblade/vim-gitgutter
 " * https://github.com/bling/vim-airline
 " * https://github.com/vim-airline/vim-airline-themes
