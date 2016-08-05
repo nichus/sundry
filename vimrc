@@ -26,6 +26,7 @@ set softtabstop=2
 set shiftwidth=2
 set number
 "set smartindent
+set expandtab
 set cindent
 set list
 set listchars=tab:▻\ ,trail:◈
