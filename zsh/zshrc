@@ -53,7 +53,7 @@ HISTFILE="$ZDOTDIR/.zsh_history"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(sudo systemd themes tmux todo zsh_reload)
-plugins=(ansible sudo systemd themes todo vi-mode web-search zsh_reload)
+plugins=(ansible sudo systemd themes todo vi-mode web-search zsh_reload wod)
 
 if type -p tmux >/dev/null; then
   plugins+=tmux
