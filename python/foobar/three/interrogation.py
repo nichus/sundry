@@ -13,31 +13,27 @@ def answer(minions):
     optimal = [ [], 0 ]
 
     for i,minion in enumerate(minions):
-        recurse_minions([i],minions,1-probabilityOf(minion),minion[0])
+        optimal = goDeeper(optimal,[i],minions,1-probabilityOf(minion),minion[0])
 
     return optimal[0]
 
-def recurse_minions(used,minions,pn,t):
-    global optimal
+def goDeeper(optimal,used,minions,pn,t):
+    """My recursion function to evaluate all the combinations of interrogation orders"""
     for i, minion in enumerate(minions):
-        try:
-            used.index(i)
-            next
-        except ValueError:
-            # Counterintuitive warning: ValueError indicates that 'i' does not
-            # exist within the list of currently used minions.  This means that
-            # we process this minion.  Lack of ValueError indicates that this
-            # minion has already been processed.
+        if i not in used:
             p = pn*(1-probabilityOf(minion))
             time = t + (pn*minion[0])
             curr = used+[i]
+
             if len(curr) == len(minions):
                 if len(optimal[0])>0:
                     if time < optimal[1]:
-                        optimal[0] = curr
-                        optimal[1] = time
+                        optimal = [ curr, time ]
+                else:
+                    optimal = [ curr, time ]
             else:
-                recurse_minions(curr,minions,p,time)
+                optimal = goDeeper(optimal,curr,minions,p,time)
+    return optimal
 
 def probabilityOf(minion):
     return ((1.0*minion[1])/minion[2])
