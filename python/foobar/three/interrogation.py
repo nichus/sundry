@@ -7,36 +7,14 @@ solutions = [ [1,0], [2,3,0,1] ]
 minions = inputs
 
 def answer(minions):
-    """Calculate the optimal interrogation order, providing the answer in the shortest time"""
-    """ T[1] + (1-P[1])*T[2] + (1-P[1])(1-P[2])*T[3]"""
+    orderable = map(order,range(0,len(minions)),minions)
+    return map(index,sorted(orderable,key=lambda minion: minion[1]))
 
-    optimal = [ [], 0 ]
+def order(i,minion):
+    return [i,minion[0]/(1.0*minion[1]/minion[2])]
 
-    for i,minion in enumerate(minions):
-        optimal = goDeeper(optimal,[i],minions,1-probabilityOf(minion),minion[0])
-
-    return optimal[0]
-
-def goDeeper(optimal,used,minions,pn,t):
-    """My recursion function to evaluate all the combinations of interrogation orders"""
-    for i, minion in enumerate(minions):
-        if i not in used:
-            p = pn*(1-probabilityOf(minion))
-            time = t + (pn*minion[0])
-            curr = used+[i]
-
-            if len(curr) == len(minions):
-                if len(optimal[0])>0:
-                    if time < optimal[1]:
-                        optimal = [ curr, time ]
-                else:
-                    optimal = [ curr, time ]
-            else:
-                optimal = goDeeper(optimal,curr,minions,p,time)
-    return optimal
-
-def probabilityOf(minion):
-    return ((1.0*minion[1])/minion[2])
+def index(minion):
+    return minion[0]
 
 for i in range(0,len(solutions)):
     print answer(inputs[i])
