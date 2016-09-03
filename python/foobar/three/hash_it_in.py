@@ -21,27 +21,6 @@ def mod(a):
 def xor(a,b):
     return a ^ b
 
-def first_round(c,i0,i1,o):
-    for name,opers in operations.iteritems():
-        calculate(name,opers,c,i0,i1,o)
-
-#def calculate(name,opers,c,i0,i1,o):
-#    trials = itertools.permutations([c,i0,i1])
-#
-#    t = 0
-#    for trial in trials:
-#        trial = list(trial)
-#        for i in range(0,len(opers)):
-#            if opers[i] == "mult":
-#                trial.insert(0,mult(trial.pop(0),trial.pop(0)))
-#            elif opers[i] == "xor":
-#                trial.insert(0,xor(trial.pop(0),trial.pop(0)))
-#            elif opers[i] == "mod":
-#                trial.insert(0,mod(trial.pop(0)))
-#        if trial[0] == o:
-#            print "Success using [%s] variant [%d] %d == %d" %(name,t,trial[0],o)
-#        t += 1
-
 def dereference(operand,c,i0,i1):
     if operand == "c":
         return c
@@ -70,7 +49,10 @@ def first_tier(i0,i1,o):
     operations = {
             "*^%": ["mult","xor","mod"],
             "*%^": ["mult","mod","xor"],
-            "^*%": ["xor","mult","mod"]
+            "^*%": ["xor","mult","mod"],
+            "^%*": ["xor","mod","mult"],
+            "*%^": ["mod","mult","xor"],
+            "*^%": ["mod","xor","mult"]
             }
 
     for oidx,operand in enumerate(operands):
