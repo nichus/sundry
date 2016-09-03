@@ -64,6 +64,7 @@ def answer(const,digest):
     return results
 
 def calculate(const,idx,digest):
+    return ((digest[idx] * digest[idx]) ^ previous(idx,digest)) % 256
     return (const * (previous(idx,digest) ^ digest[idx])) % 256
     return ((const * previous(idx,digest)) ^ digest[idx]) % 256
     return ((const * digest[idx]) ^ previous(idx,digest)) % 256
