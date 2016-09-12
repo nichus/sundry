@@ -1,8 +1,6 @@
 execute pathogen#infect()
 
 " Pathogen modules used:
-" * git://github.com/altercation/vim-colors-solarized.git
-" * https://github.com/sheerun/vim-wombat-scheme.git
 " * git://github.com/tpope/vim-fugitive.git
 " * git://github.com/tpope/vim-git.git
 " * https://github.com/tpope/vim-sensible.git
@@ -15,9 +13,16 @@ execute pathogen#infect()
 " * https://github.com/tpope/vim-surround
 " * https://github.com/scrooloose/syntastic
 "
-" Standalone colorschemes used:
+" Pathogen colorschemes used: (vimcolors.com for more)
+" * https://github.com/Marfisc/vorange.git
 " * https://github.com/jnurmine/Zenburn.git
 " * https://github.com/sjl/badwolf.git
+" * https://github.com/sheerun/vim-wombat-scheme.git
+" * git://github.com/altercation/vim-colors-solarized.git
+" * https://github.com/YorickPeterse/happy_hacking.vim.git
+" * https://github.com/owickstrom/vim-colors-paramount.git
+" * https://github.com/pbrisbin/vim-colors-off.git
+" * https://github.com/kristijanhusak/vim-hybrid-material.git
 
 syntax on
 filetype plugin indent on
@@ -40,9 +45,9 @@ set comments+=fb:*
 
 "set background=dark
 "let g:badwolf_darkgutter=1
-colorscheme zenburn
+colorscheme vorange
 
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
+"let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 let g:ansible_attribute_highlight = "ab"
