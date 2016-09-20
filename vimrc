@@ -43,6 +43,9 @@ set comments-=s1:/*,mb:*,ex:*/
 set comments+=s:/*,mb:\ *,ex:\ */
 set comments+=fb:*
 
+" Highlight the focused line
+set cursorline
+
 "set background=dark
 "let g:badwolf_darkgutter=1
 colorscheme vorange
