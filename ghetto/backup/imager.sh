@@ -358,26 +358,31 @@ for fs in $FULLPARTS $LVS; do
 done
 
 echo "fsarchiver restfs \$DEST/fsarchive.fsa $RESTOREFLAGS" >> $DEST/restore.sh
-echo "" >> $DEST/restore.sh
-echo "echo Please run the rest of the commands in restore.sh manually." >> $DEST/restore.sh
-echo "# Now for the hard part, I know you can do it!" >> $DEST/restore.sh
-echo "#   mkdir /mnt/backup" >> $DEST/restore.sh
-echo "#   mount /dev/mapper/<system-root> /mnt/backup" >> $DEST/restore.sh
-echo "#   mount -o bind /dev /mnt/backup/dev" >> $DEST/restore.sh
-echo "#   chroot /mnt/backup /bin/bash" >> $DEST/restore.sh
-echo "#   mount <system-boot> /boot" >> $DEST/restore.sh
-echo "#   grub-install <boot-device (/dev/sda)>" >> $DEST/restore.sh
-echo "#   umount /mnt/backup/boot" >> $DEST/restore.sh
-echo "#   exit" >> $DEST/restore.sh
-echo "#   umount /mnt/backup/dev" >> $DEST/restore.sh
-echo "#   umount /mnt/backup" >> $DEST/restore.sh
-echo "#" >> $DEST/restore.sh
-echo "# The good news is you're done.  umount the partition the backups live" >> $DEST/restore.sh
-echo "# on, repeat the team mantra (WTWTCH), and reboot." >> $DEST/restore.sh
+
+echo "echo All done, reboot to experience your system as it was before it was imaged" >> $DEST/restore.sh
+echo "echo" >> $DEST/restore.sh
+
+# This has be resolved by grabbing a bigger chunk of the disk header"
+#echo "" >> $DEST/restore.sh
+#echo "echo Please run the rest of the commands in restore.sh manually." >> $DEST/restore.sh
+#echo "# Now for the hard part, I know you can do it!" >> $DEST/restore.sh
+#echo "#   mkdir /mnt/backup" >> $DEST/restore.sh
+#echo "#   mount /dev/mapper/<system-root> /mnt/backup" >> $DEST/restore.sh
+#echo "#   mount -o bind /dev /mnt/backup/dev" >> $DEST/restore.sh
+#echo "#   chroot /mnt/backup /bin/bash" >> $DEST/restore.sh
+#echo "#   mount <system-boot> /boot" >> $DEST/restore.sh
+#echo "#   grub-install <boot-device (/dev/sda)>" >> $DEST/restore.sh
+#echo "#   umount /mnt/backup/boot" >> $DEST/restore.sh
+#echo "#   exit" >> $DEST/restore.sh
+#echo "#   umount /mnt/backup/dev" >> $DEST/restore.sh
+#echo "#   umount /mnt/backup" >> $DEST/restore.sh
+#echo "#" >> $DEST/restore.sh
+#echo "# The good news is you're done.  umount the partition the backups live" >> $DEST/restore.sh
+#echo "# on, repeat the team mantra (WTWTCH), and reboot." >> $DEST/restore.sh
 
 echo ""
 echo ""
-fsarchiver archinfo $FSARCHIVE | less
+fsarchiver archinfo $FSARCHIVE | more
 echo ""
 echo "Does this look right to you?"
 echo ""
