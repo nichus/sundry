@@ -17,6 +17,7 @@ __ssl_addition__ = 'rhmoult'
 
 import sys
 import os
+import argparse
 #import sys  # Modification by rmoulton
 #import ssl  # Modification by rmoulton
 
@@ -35,13 +36,19 @@ class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
 
 def main(HandlerClass=SimpleHTTPRequestHandler, ServerClass=HTTPServer, protocol="HTTP/1.0"):
 
-    if sys.argv[1:]:
-        port = int(sys.argv[1])
+    parser = argparse.ArgumentParser(description='Listen and receive the incoming audit records')
+    parser.add_argument('--port', type=int, help='the port number to listen on')
+    parser.add_argument('--dir', help='the port number to listen on')
+
+    args = parser.parse_args()
+
+    if args.port:
+        port = args.port
     else:
         port = 8000
 
-    if sys.argv[2:]:
-        os.chdir(sys.argv[2])
+    if args.dir:
+        os.chdir(args.dir)
 
     server_address = ('', port)
 
