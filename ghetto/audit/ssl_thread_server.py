@@ -18,8 +18,7 @@ __ssl_addition__ = 'rhmoult'
 import sys
 import os
 import argparse
-#import sys  # Modification by rmoulton
-#import ssl  # Modification by rmoulton
+import ssl  # Modification by rmoulton
 
 try:
     from cStringIO import StringIO
@@ -53,6 +52,8 @@ def main(HandlerClass=SimpleHTTPRequestHandler, ServerClass=HTTPServer, protocol
     server_address = ('', port)
 
     server = ThreadingSimpleServer(server_address, SimpleHTTPRequestHandler)
+
+    server.socket = ssl.wrap_socket(server.socket, certfile='/path/to/cert', server_side=True, cert_reqs=CERT_REQUIRED, ssl_version=PROTOCOL_TLSv1_2)
 
     try:
         while 1:

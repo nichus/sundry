@@ -1,0 +1,30 @@
+Class on 11/15, 11/17 then break and resume on 12/1
+
+Link to look at:  https://app.box.com/s/8tso8h5kerhy83qipb4bujkpc4bj0eoq
+
+Game plan:
+
+  11/15 Night 1: Grab docs, discussion on syllabus
+  11/17 Night 2: Basic networking and IP addressing
+  12/01 Night 3: Basic/Advanced networking, intro to hardware configuration (firewalls)
+  12/06 Night 4: Network security design (part 1) plus Operating Systems basics, possibly even web security
+  12/08 Night 5: Network security design (part 2) plus basics of IDS, IPS, HIDS
+  12/13 Night 6: Wrap up of all covered topics
+
+11/15
+
+  Can't protect it, unless you understand how it moves.
+  discussion about how this meeting works at the networking layer:
+    Starts with discussion with the 7 layer OSI model (https://mplsnet.files.wordpress.com/2014/06/osi-model.gif)
+      Every layer of the OSI model adds its own header, Data layer also adds a footer.
+      Physical layer doesn't add any overhead because it's the bottom layer
+      Top 3 layers (application, presentation, session) are the data. In the TCP/IP model this is the application layer
+      Layer 4 (transport) are the segments, TCP/IP is also transport
+      Layer 3 (network) is the packets, TCP/IP is the Internet layer
+      Layer 2 (data link) is the frames and part of the TCP/IP Network Access layer
+      Layer 1 (physical) comprises the bits and is the other part of the TCP/IP Network Access layer
+  Homework:
+    Chapter 1 & 2 of CompTIA network+
+  Joke:
+    (q) You're being chased by a group of clowns, what do you do when you turn around to confront them?
+    (a) Go for the juggler
