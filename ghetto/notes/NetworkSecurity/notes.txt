@@ -28,3 +28,17 @@ Game plan:
   Joke:
     (q) You're being chased by a group of clowns, what do you do when you turn around to confront them?
     (a) Go for the juggler
+
+11/17
+
+  Node: Any device that carries an IP address
+  OSI Model Continued:
+    Physical is concerned with the transmission of data on the network
+    Data Link Layer
+      2 parts:
+        MAC - Media Access Control
+          physical addressing, logical topology, method of transmitting on the media
+        LLC - Logical Link Control
+          connection services, synchronizing transmissions
+  Homework:
+    Read through remainder of chapter 2, chapter 3 (specifically the Network Infrastruction Devices)
