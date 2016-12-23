@@ -42,3 +42,25 @@ Game plan:
           connection services, synchronizing transmissions
   Homework:
     Read through remainder of chapter 2, chapter 3 (specifically the Network Infrastruction Devices)
+
+12/01
+
+  Discussion on Gen1 firewalls, (routers) filter based on macs, ips, networks, ports
+  Gen3 firewalls - stateful packet inspecting, much better but can be circumnavigated
+  IDS (&NIDS/HIDS)
+
+  Way too much time spent on binary math (subnetting)
+
+12/06
+
+  Nothing worth noting...
+  Primarily a 3 hour discussion covering how bit math on addresses and routes is used for security.
+
+12/08 - Cancelled
+
+12/13
+
+  Policies, Standards, Governance and Guidelines.  Guidelines are last in line.
+  How important is remote access to your customer?
+  SSL/TLS, -> TLS Ephemeral keys are the way to go
+
