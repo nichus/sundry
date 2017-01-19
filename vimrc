@@ -12,6 +12,7 @@ execute pathogen#infect()
 " * https://github.com/pangloss/vim-javascript
 " * https://github.com/tpope/vim-surround
 " * https://github.com/scrooloose/syntastic
+" * https://github.com/hashivim/vim-terraform.git
 "
 " Pathogen colorschemes used: (vimcolors.com for more)
 " * https://github.com/Marfisc/vorange.git
