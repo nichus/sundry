@@ -53,7 +53,9 @@ HISTFILE="$ZDOTDIR/.zsh_history"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(sudo systemd themes tmux todo zsh_reload)
-plugins=(ansible sudo systemd themes todo vi-mode web-search zsh_reload wod)
+plugins=(ansible git sudo systemd terraform themes vi-mode web-search zsh_reload wod)
+
+plugins+=todo
 
 if type -p tmux >/dev/null; then
   plugins+=tmux
@@ -111,3 +113,6 @@ bindkey '^u' backward-kill-line
 bindkey '^y' yank
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
+
+wod
+#jira ls
