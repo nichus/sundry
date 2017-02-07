@@ -37,7 +37,7 @@ CASE_SENSITIVE="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -53,7 +53,7 @@ HISTFILE="$ZDOTDIR/.zsh_history"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(sudo systemd themes tmux todo zsh_reload)
-plugins=(ansible git sudo systemd terraform themes vi-mode web-search zsh_reload wod)
+plugins=(ansible git sudo systemd terraform themes vagrant vi-mode web-search zsh_reload wod)
 
 plugins+=todo
 
