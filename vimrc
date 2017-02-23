@@ -56,3 +56,8 @@ let g:airline_powerline_fonts = 1
 "let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 let g:ansible_attribute_highlight = "ab"
+
+if &diff
+else
+  silent sba
+endif
