@@ -25,6 +25,7 @@ execute pathogen#infect()
 " * https://github.com/owickstrom/vim-colors-paramount.git
 " * https://github.com/pbrisbin/vim-colors-off.git
 " * https://github.com/kristijanhusak/vim-hybrid-material.git
+" * https://github.com/ltlollo/diokai.git
 
 syntax on
 filetype plugin indent on
