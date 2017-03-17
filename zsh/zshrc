@@ -68,7 +68,7 @@ ZSH_TMUX_FIXTERM=false
 ZSH_TMUX_GENERATE_SESSIONNAME=true
 #ZSH_TMUX_SESSIONNAME=`egrep '^[a-z]{4}$' /usr/share/dict/words | sort -R | tail -1`
 
-export PATH="/home/ovandenb/bin:/home/ovandenb/gocode/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/ovandenb/.local/bin:/home/ovandenb/bin/packer"
+export PATH="$HOME/bin:$HOME/gocode/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$HOME/.local/bin:$HOME/bin/packer"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
