@@ -1,0 +1,70 @@
+Module 5 - Monitor Inputs
+  Question: How does splunk handle file rotations if it happens during a restart? Data lost?
+  Answer: Directory Monitors do, File Monitors don't
+  slide 112
+  splunk cmd btprobe -d SPLUNK_HOME/var/lib/splunk/fishbucket/splunk_private_db --file <source> --reset
+
+  tcp/udp default source name: <host>:<port>
+
+  scripted input:
+    * $splunk_home/etc/apps/<app_name>/bin # This is the best place for it.
+    * $splunk_home/bin/scripts
+    * $splunk_home/etc/system/bin
+  test script: ./splunk cmd <path>/script.sh # doesn't run script, just tests that splunk can access it.
+  scripted inputs can also buffer data, similar to the network collectors
+  Better to have cron run the script, and dump the data to a logfile.  Make splunk monitor the logfile instead
+
+  Module 7: windows & Agentless
+    Windows
+      input types: admon perfmon WinEventLog WinHostMon WinPrintMon WinRegMon
+      Warning from fellow student:
+          Just throwing this out there. If you monitor the registry in a way that
+          causes the Universal Forwarders to send you their entire registry you
+          are likely to clog WAN links. I saw a 16 Gbps WAN link go down because
+          of this went thousands of Windows systems were sending over their
+          registry.
+
+      [WinEventLog://Security]
+        whitelist1= "Stuff"
+        whitelist2= "Other stuff"
+        blacklist
+      Maximum of 10 whitelists and blacklists per universal forwarder stanza
+      Can do WMI remote inputs, not recommended for environments bigger than small, scales poorly, requires an AD account
+      Special field extractions
+        IIS: frequently reconfigured on the fly by admins.  OBvs this is a problem.
+        Use indexed field extraction on the windows forwarder to correct this.
+        Ensure that the header is in the same place and never moves.  Then the forwarder can use that header to pre-parse the data.
+        Powershell input, otherwise teh same as the scripted input, still better to have windows schedule it instead
+    Agentless
+      Splunk App for Stream
+        essentially a packet capture agent
+        monitors the network and collects it's data there, then sends it into splunk
+      HTTP Event Collector
+        Splunk listens for http inputs, clients send their data to the http listener.
+    Distributed HEC (HTTP Event Collector) Deployment Options
+      Can scale because every splunk system can act as a collector to receive data from a load balancer
+      Disabled by default Settings > Data Inputs > HTTP Inputs
+      Create a token, then define metadata for the stream
+      Data can be transmitted as JSON
+      Can send acks, but requires additional handshaking for the response channel
+      Multi-event JSON posts are possible, but in non-standard format: { stuff }{ stuff 2 }{ stuff 3} rather than standard [{}{}{}]
+      My Token: 3372606C-6D24-48A4-A28D-09C616A277E7
+
+  Module 8: Fine-Tuning Inputs
+    props.conf is very important
+      inputs phase:
+        character encoding (default is utf8)
+        fine tuned source types
+          can override the defaults on a per file basis
+
+      parsing:
+        event breaks
+        time extraction
+        event transformation
+
+  Module 9: Parsing Phase and Data Preview
+    props.conf.spec - LINE_BREAKER is best way to split lines, ProServ recommended
+    Take extra time to ensure timestamps are correct
+    Either TZ in timestamp, or specified in props.conf or tz of indexer
+
+      

@@ -1,0 +1,58 @@
+Teacher: joanna@splunk.com
+
+My Intro:
+  I'm Orien (sounds like the constellation Orion), just started as a Splunk
+  Engineer at Defense Point Security. I've finished a couple Splunk classes
+  over the last month, nothing practical yet, Linux for 20+ years. Dogs.
+
+Goals:
+  Manage and deploy forwarders with management (Module 4&5, critically important)
+  configure common splunk data inputs
+  customize input parsing process
+  - Not covering creating splunk indexes
+
+Schedule 1-4 today, 4-7 tomorrow, 8-12 Friday
+
+Module 1: Introduction
+  Input > Parsing > Indexing > Searching
+  Primary Components: Forwarder, Indexer, Search Head
+  Additional: Heavy Forwarder, Deployment Server
+  
+  Splunk Data Administrator Role
+    data onboarding and management
+    work with users requesting new data, define events and fields for ingest
+    prioritize requests
+    document everything
+    design and manage inputs for UF/HF to capture data
+    manage parsing, line breaking, timestamp extraction
+    move from testing to production
+Lab 1:
+  Path: /opt/splunk
+
+Module 2: Getting Data in - Staging
+  Input phase - broad strokes only
+    most configuration in input.conf
+    some configuration occurs in props.conf 
+  Parsing phase - fine tuned tweaks
+    most configuration in props.conf
+    also uses transforms.conf
+  _thefishbucket contains file monitoring audit information
+  custom indexes control access, improve performance and control retention time for each index individually.
+  Index-Time precedence, local/default file processing under apps occurs in ascii sort order
+  splunk btool <conf-name> list <options>
+    options: --debug --user=<user> --app=<app>
+    examples: splunk bool inputs list monitor:///var/log/secure.log --debug
+      --debug shows the config files that created the settings.
+
+Module 3: getting Data in - Productin
+  Universal Forwarder bandwidth limited to 256KBps by default
+  UF only forward to splunk instances, and only 1 at a time
+  HF can forward to other products, and more than 1 at a time
+  HF can be used as a mid stage forwarder for multi-tier forwarding setups.
+  HF no longer best practice
+
+Module 4: Deployment Server
+  Server classes have one or more apps
+  A server has one or more classes
+  so a server gets apps via the classes it belongs to
+

@@ -1,0 +1,55 @@
+Module 5 - Buckets and indexes (lots of data from DataAdmin class)
+  Show data utilization for an index with details
+    |dbinspect index=<index>
+  Can set the search default window per app
+  ui-prefs.conf
+    [search]
+    dispatch.earliest_time = -24h@h
+    dispatch.latest_time = now
+
+Module 6 - Splunk Index Management
+  Recommend
+    rolling hot buckets daily,
+    maxHotBuckets - limit of 10 hot buckets for a high volume index (default 3)
+    frozenTimePeriodInSecs - how long to wait before freezing buckets
+    index.conf 
+      [volume:fast]
+      path = <>
+      maxVolumeDataSizeMB = <size>
+
+      [soc]
+      homePath = volume:fast/soc/db   # homePath is hot and warm buckets
+      homePath.maxDataSizeMB = <size>
+      coldPath                        # Same thing for cold
+
+    Backups
+      $SPLUNK_HOME/var/lib/splunk // indexes
+      $SPLUNK_HOME/etc            // configs
+
+      Hot buckets cannot be backed up without stopping splunk, or using snapshots
+        Alternatively, forhigh volume, multiple daily incremental backups to grab data frequently
+    Moving an index
+      stop splunk
+      then move the directories
+      then update indexes.conf to point at the new locations
+      if a global move, update SPLUNK_DB environment variable
+    Removing data
+      wait for expiration
+      delete command marks as deleted, doesn't free space need to the the special can_delete role for that
+        Search> search for some records | delete
+        > splunk clean [eventdata|userdata|all] [-index name]
+          Actually removes the data from the index entirely, frees space
+          if no index is provided, deletes all the data!
+  Restoring Data from frozen
+    only raw data is frozen, no indexes
+    copy archive directory into the index specific thaweddb directory
+    The rebuild the index for that data, doesn't recharge for licensing
+      > splunk rebuild <path to thawed bucket directory>
+
+  Index replication
+    
+Module 8: Authentication Integration
+  LDAP, PAM, RADIUS, AD, etc
+
+
+

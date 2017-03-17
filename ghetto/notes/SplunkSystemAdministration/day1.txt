@@ -1,0 +1,74 @@
+Mitch Fleischman
+mitchf@splunk.com
+
+studentid: 06
+ipaddress:  52.53.200.165 10.0.0.206
+ssh username: btv_splunker06
+
+set servername and hostname to splunk06
+also set sessiontimeout, to something helpful for class
+
+Modules 1-6.5 today, 6.5-11 tomorrow
+
+When do you add more indexers?
+  Partly based on how much searching, but add a new indexer every 100 = 250GB daily
+  with Enterprise Security, you'll trend closer to the lower number (aka more indexers)
+
+Search Heads?
+  8-12 users per search head
+  user might mean scheduled searches, etc
+
+hardware
+  12G ram
+  indexer: 12@2Ghz 800iops
+  search: 16@2Ghz 2x10k SAS RAID1
+
+splunk kv store is mongodb
+
+Linux OS tuning: pg 20
+  ulimit -c 1073741824
+  ulimit -n 48 x default
+  ulimit -u 12 x default
+
+  disable THP
+
+  change root password, insert sha256 checksum (I believe) into $SPLUNK_HOME/etc/passwd to change admin password
+
+  ./splunk enable boot-start -user <username>
+
+
+Windows
+  Autostarts automatically
+
+$SPLUNK_DB = $SPLUNK_HOME/var/lib/splunk
+
+Licensing:
+  3 warnings for free splunk, 5 for paid
+  30 day rolling window
+
+Module 3: Installing Apps
+  App is collection of files (inputs, indexes, sourcetypes, extractions, transformations), (eventtypes, tags, reports, dashboards, other KOs), (Scripts, web assets)
+  Addon is an App subset (like the bits needed to make a forwarder work)
+  Remove an app:
+    splunk remove app <app_folder>
+  Permissions:
+    read - to see and interact with it
+    write - to add delete modify the KO in the app
+    Default is read only
+
+Module 4: Configuration files
+  */default - comes with splunk
+  */local   - user overrides
+  .meta files determine how global a configuration file setting is.
+    app/metadata/local.meta
+      [tags/action%3Daddtocart/browser]
+      access = read : [ * ]
+      export = (none|system)
+      owner
+      version
+      modtime
+
+  splunk btool check
+  splunk btool (inputs|) list (|monitor:///var/log{, --debug})  # debug shows which file the line came from
+  splunk btool tags list (list all tags configured) --debug (also show the file they came from)
+  splunk btool tags list --debug --app=search --user=<username>

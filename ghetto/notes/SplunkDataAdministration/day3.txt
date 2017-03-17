@@ -1,0 +1,33 @@
+Module 10:
+  Modifying raw data before it's indexed
+  use per event source types only in a last chance scenario, everything else is better
+  to set metadata in transforms.conf
+    SOURCE_KEY = _raw
+    REGEX = server:(\w+)
+    DEST_KEY = MetaData:Host
+    FORMAT = host::$1
+  Host => host::,
+
+  To change the index at index-time (note the additional underscore here)
+    REGEX = (Error|Warning)
+    DEST_KEY = _MetaData:Index
+    FORMAT = itops
+
+  Filter Events
+    FORMAT = nullQueue
+
+  http://<splunk>/debug/refresh - forces splunk to refresh it's config(?)
+    at a minimum it does the inputs configurations, definitely doesn't do the indexer
+
+
+  I need to go over modules 10 and 11. Missed too much i fear
+
+Module 12: Diag
+  Creates diagnostic package for shipment to experts.
+  ./splunk diag
+  Create and index a diag
+
+
+Course Review:
+  Mod 1 - 
+  joanna@splunk.com
