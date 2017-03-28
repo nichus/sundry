@@ -1,0 +1,75 @@
+[submodule "vim/pack/nichus/start/vim-fugitive"]
+	path = vim/pack/nichus/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/pack/nichus/start/tpope-vim-git"]
+	path = vim/pack/nichus/start/tpope-vim-git
+	url = https://github.com/tpope/vim-git.git
+[submodule "vim/pack/nichus/start/tpope-vim-sensible"]
+	path = vim/pack/nichus/start/tpope-vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "vim/pack/nichus/start/rust-lang-rust.vim"]
+	path = vim/pack/nichus/start/rust-lang-rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule "vim/pack/nichus/start/pearofducks-ansible-vim"]
+	path = vim/pack/nichus/start/pearofducks-ansible-vim
+	url = https://github.com/pearofducks/ansible-vim.git
+[submodule "vim/pack/nichus/start/airblade-vim-gitgutter"]
+	path = vim/pack/nichus/start/airblade-vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "vim/pack/nichus/start/bling-vim-airline"]
+	path = vim/pack/nichus/start/bling-vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim/pack/nichus/start/vim-airline-vim-airline-themes"]
+	path = vim/pack/nichus/start/vim-airline-vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "vim/pack/nichus/start/pangloss-vim-javascript"]
+	path = vim/pack/nichus/start/pangloss-vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "vim/pack/nichus/start/tpope-vim-surround"]
+	path = vim/pack/nichus/start/tpope-vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/nichus/start/scrooloose-syntastic"]
+	path = vim/pack/nichus/start/scrooloose-syntastic
+	url = https://github.com/scrooloose/syntastic
+[submodule "vim/pack/nichus/start/hashivim-vim-terraform"]
+	path = vim/pack/nichus/start/hashivim-vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git
+[submodule "vim/pack/nichus/start/tangledhelix-vim-kickstart"]
+	path = vim/pack/nichus/start/tangledhelix-vim-kickstart
+	url = https://github.com/tangledhelix/vim-kickstart.git
+[submodule "vim/pack/nichus/start/Marfisc-vorange"]
+	path = vim/pack/nichus/start/Marfisc-vorange
+	url = https://github.com/Marfisc/vorange.git
+[submodule "vim/pack/nichus/start/sjl-badwolf"]
+	path = vim/pack/nichus/start/sjl-badwolf
+	url = https://github.com/sjl/badwolf.git
+[submodule "vim/pack/nichus/start/YorickPeterse-happy_hacking.vim"]
+	path = vim/pack/nichus/start/YorickPeterse-happy_hacking.vim
+	url = https://github.com/YorickPeterse/happy_hacking.vim.git
+[submodule "vim/pack/nichus/start/owickstrom-vim-colors-paramount"]
+	path = vim/pack/nichus/start/owickstrom-vim-colors-paramount
+	url = https://github.com/owickstrom/vim-colors-paramount.git
+[submodule "vim/pack/nichus/start/pbrisbin-vim-colors-off"]
+	path = vim/pack/nichus/start/pbrisbin-vim-colors-off
+	url = https://github.com/pbrisbin/vim-colors-off.git
+[submodule "vim/pack/nichus/start/kristijanhusak-vim-hybrid-material"]
+	path = vim/pack/nichus/start/kristijanhusak-vim-hybrid-material
+	url = https://github.com/kristijanhusak/vim-hybrid-material.git
+[submodule "vim/pack/nichus/start/dsolstad-vim-wombat256i"]
+	path = vim/pack/nichus/start/dsolstad-vim-wombat256i
+	url = https://github.com/dsolstad/vim-wombat256i.git
+[submodule "vim/pack/nichus/start/jnurmine-Zenburn"]
+	path = vim/pack/nichus/start/jnurmine-Zenburn
+	url = https://github.com/jnurmine/Zenburn.git
+[submodule "vim/pack/nichus/start/altercation-vim-colors-solarized"]
+	path = vim/pack/nichus/start/altercation-vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/pack/nichus/start/xero-blaquemagick.vim"]
+	path = vim/pack/nichus/start/xero-blaquemagick.vim
+	url = https://github.com/xero/blaquemagick.vim.git
+[submodule "vim/pack/nichus/start/ltlollo-diokai"]
+	path = vim/pack/nichus/start/ltlollo-diokai
+	url = https://github.com/ltlollo/diokai.git
+[submodule "vim/pack/nichus/start/sheerun-vim-wombat-scheme"]
+	path = vim/pack/nichus/start/sheerun-vim-wombat-scheme
+	url = https://github.com/sheerun/vim-wombat-scheme.git

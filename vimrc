@@ -1,4 +1,4 @@
-execute pathogen#infect()
+"execute pathogen#infect()
 
 " Pathogen modules used:
 " * git://github.com/tpope/vim-fugitive.git
@@ -51,7 +51,7 @@ set cursorline
 
 "set background=dark
 "let g:badwolf_darkgutter=1
-colorscheme vorange
+colorscheme happy_hacking
 
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#whitespace#mixed_indent_algo = 1
