@@ -1,5 +1,5 @@
-[submodule "vim/pack/nichus/start/vim-fugitive"]
-	path = vim/pack/nichus/start/vim-fugitive
+[submodule "vim/pack/nichus/start/tpope-vim-fugitive"]
+	path = vim/pack/nichus/start/tpope-vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/pack/nichus/start/tpope-vim-git"]
 	path = vim/pack/nichus/start/tpope-vim-git
