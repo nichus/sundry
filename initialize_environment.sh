@@ -29,8 +29,8 @@ MODULES="https://github.com/tpope/vim-fugitive.git
         https://github.com/pangloss/vim-javascript
         https://github.com/tpope/vim-surround
         https://github.com/scrooloose/syntastic
-	https://github.com/hashivim/vim-terraform.git
-	https://github.com/tangledhelix/vim-kickstart.git
+        https://github.com/hashivim/vim-terraform.git
+        https://github.com/tangledhelix/vim-kickstart.git
         https://github.com/Marfisc/vorange.git
         https://github.com/sjl/badwolf.git
         https://github.com/YorickPeterse/happy_hacking.vim.git
@@ -41,7 +41,7 @@ MODULES="https://github.com/tpope/vim-fugitive.git
         https://github.com/jnurmine/Zenburn.git
         https://github.com/altercation/vim-colors-solarized.git
         https://github.com/xero/blaquemagick.vim.git
-	https://github.com/ltlollo/diokai.git
+        https://github.com/ltlollo/diokai.git
         https://github.com/sheerun/vim-wombat-scheme.git"
 
 cd $HOME/.vim/bundle
