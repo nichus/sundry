@@ -107,11 +107,15 @@ __TODO-highlight-indicator {
 }
 
 #msgs_scroller_div::-webkit-scrollbar-track, .client_container,
-#search_terms, #footer, ts-message, .channel_header, ts-jumper ts-jumper-container,
+#search_terms, #footer, .channel_header, ts-jumper ts-jumper-container,
 ts-jumper input[type="text"],
 .supports_custom_scrollbar:not(.slim_scrollbar) #col_channels:hover #channels_scroller::-webkit-scrollbar-track,
 #channel_header_info, #channel_topic_text, #channel_topic_text code, #edit_topic_inner:before {
   background: var(--background) !important;
+}
+
+ts-message {
+  background: var(--background-content) !important;
 }
 
 .channel_header, #col_messages, #footer {
@@ -226,7 +230,7 @@ li.active[class] span,
 #client_body, #messages_container.has_top_messages_banner:before {
    background: var(--background-content) !important;
    font-family: "Helvetica Neue";
-   font-weight: medium;
+   font-weight: medium !important;
 }
 
 ts-message, .channel_title .channel_name, ts-jumper input[type="text"],
