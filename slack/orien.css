@@ -33,7 +33,7 @@ limitations under the License.
    --background-bright: #FFF;
 
    --border-dim: #666;
-   --border-bright: var(#aaa);
+   --border-bright: #aaa;
 
    --text-bright: #FFF;
    --text-special: var(--primary);
