@@ -114,7 +114,7 @@ ts-jumper input[type="text"],
   background: var(--background) !important;
 }
 
-ts-message {
+ts-message, .client_container {
   background: var(--background-content) !important;
 }
 
