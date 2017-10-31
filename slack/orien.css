@@ -149,6 +149,7 @@ ts-message, .client_container {
    background-color: var(--background) !important;
    border: solid var(--border-bright);
    border-width: 1px 1px 1px 0;
+   font-weight: bold !important;
 }
 
 .p-channel_sidebar__channel:hover,
