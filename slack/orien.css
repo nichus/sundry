@@ -147,8 +147,8 @@ ts-message, .client_container {
 .p-channel_sidebar__channel--selected:hover,
 .p-channel_sidebar__link--selected:hover {
    background-color: var(--background) !important;
-   border: solid var(--border-bright);
-   border-width: 1px 1px 1px 0;
+   /* border: solid var(--border-bright);
+   border-width: 1px 1px 1px 0; orien */
 }
 
 .p-channel_sidebar__channel:hover,
