@@ -26,6 +26,7 @@ limitations under the License.
    --background: #23272a;
    --background-elevated: #2c2f33;
    --background-content: #36393e;
+   --attention: #d98719;
 
    /* These should be less important: */
    --background-hover: rgba(255, 255, 255, 0.1);
@@ -410,12 +411,15 @@ ts-message .action_hover_container .btn_msg_action,
 
 .feature_name_tagging_client ts-message .mention, ts-message .mention,
 span.match {
-  border: 1px solid var(--border-bright) !important;
+  border: 1px solid var(--attention) !important;
   background-color: var(--background-elevated) !important;
   font-weight: bold;
+  /*
   padding: 2px 4px;
   margin: 2px;
   border-radius: 10px;
+  orien
+  */
 }
 
 .mention > .mention {
