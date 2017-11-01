@@ -230,7 +230,7 @@ li.active[class] span,
 
 #client_body, #messages_container.has_top_messages_banner:before {
    background: var(--background-content) !important;
-   font-family: "Helvetica Neue";
+   font-family: Whitney, "Helvetica Neue", "Trebuchet MS", Helvetica, Arial;
    font-weight: medium !important;
 }
 
