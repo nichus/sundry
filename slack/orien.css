@@ -509,13 +509,15 @@ ts-message a.timestamp{
   padding: 4px 4px;
   border-radius: 0px;
   border: 1px solid var(--attention);
-  margin: 0px 11px -13px 0px;
+  margin: -1px 11px -13px 0px;
 }
 
 #msgs_div .unread_divider.no_unreads .divider_label
 {
  background: var(--background-elevated);
  color: #aaa !important;
+ border: none;
+ margin-top: 0px;
 }
 
 #msgs_div .unread_divider.no_unreads hr{
