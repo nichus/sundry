@@ -348,7 +348,7 @@ ts-message .action_hover_container .btn_msg_action,
 
 pre,
 ts-message .action_hover_container .btn_msg_action,
-.file_container .CodeMirror .CodeMirror-code>div pre, .file_container .CodeMirror .sssh-line pre, .file_container .sssh-code .CodeMirror-code>div pre, .file_container .sssh-code .sssh-line pre,
+.file_container .CodeMirror .CodeMirror-code>div pre, .file_container .CodeMirror .CodeMirror-code>div, .file_container .CodeMirror .sssh-line pre, .file_container .sssh-code .CodeMirror-code>div pre, .file_container .sssh-code .sssh-line pre,
 .search_message_result .search_message_result_meta a,
 .search_message_result .search_message_result_meta .date_links a,
 .flexpane_redesign #flex_contents .heading_text,
