@@ -319,7 +319,6 @@ ts-message:hover {
 .rxn,
 #col_channels,
 #col_channels_footer,
-pre,
 ts-message .action_hover_container .btn_msg_action,
 .file_container,
 .file_container .CodeMirror .CodeMirror-code>div:before, .file_container .CodeMirror .sssh-line:before, .file_container .sssh-code .CodeMirror-code>div:before, .file_container .sssh-code .sssh-line:before,
@@ -330,7 +329,7 @@ ts-message .action_hover_container .btn_msg_action,
 .menu,
 .menu #menu_items_scroller,
 .btn, .btn_outline {
-  background: var(--background-elevated) !important;
+  background: var(--background-content) !important;
 }
 
 /* orien attachment */
@@ -359,6 +358,7 @@ ts-message .action_hover_container .btn_msg_action,
 .btn, .btn_outline, .menu {
   color: var(--text) !important;
   border-color: var(--border-dim) !important;
+  background-color: var(--background);
 }
 
 .btn:hover:after {
@@ -501,7 +501,7 @@ ts-message a.timestamp{
 
 /* orien divider */
 #msgs_div .unread_divider hr {
-  color: var(--attention); /* default is #f26130 */
+  border-color: var(--attention); /* default is #f26130 */
 }
 #msgs_div .unread_divider .divider_label
 {
