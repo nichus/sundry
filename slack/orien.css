@@ -333,6 +333,10 @@ ts-message .action_hover_container .btn_msg_action,
   background: var(--background-elevated) !important;
 }
 
+/* orien attachment */
+.attachment_group .media_caret {
+  color: var(--border-dim);
+}
 
 #flex_contents .heading,
 #flex_contents .heading a,
