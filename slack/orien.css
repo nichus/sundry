@@ -21,12 +21,12 @@ limitations under the License.
 
 :root {
    /* Modify these to change your theme colors: */
-   --primary: #09F;
    --text: #c3c4c5;
    --background: #23272a;
    --background-elevated: #2c2f33;
    --background-content: #36393e;
    --attention: #d98719;
+   --primary: var(--attention);
 
    /* These should be less important: */
    --background-hover: rgba(255, 255, 255, 0.1);
@@ -752,6 +752,10 @@ ts-message .reply_bar:hover {
   border: 1px solid var(--attention);
   background-color: var(--background);
   border-radius: 0px;
+  height: 25px;
+}
+#messages_unread_status:hover {
+  background-color: var(--background-elevated);
 }
 
 #archives_return, .messages_banner {
