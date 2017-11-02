@@ -747,15 +747,18 @@ ts-message .reply_bar:hover {
    border-color: var(--border-dim);
 }
 
-/* orien */
+/* orien : HERE */
 #messages_unread_status {
   border: 1px solid var(--attention);
   background-color: var(--background);
   border-radius: 0px;
   height: 25px;
 }
-#messages_unread_status:hover {
+#messages_unread_status:hover, #messages_unread_status:hover .clear_unread_messages {
   background-color: var(--background-elevated);
+}
+#messages_unread_status .clear_unread_messages {
+  border-left: none;
 }
 
 #archives_return, .messages_banner {
