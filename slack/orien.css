@@ -747,6 +747,13 @@ ts-message .reply_bar:hover {
    border-color: var(--border-dim);
 }
 
+/* orien */
+#messages_unread_status {
+  border: 1px solid var(--attention);
+  background-color: var(--background);
+  border-radius: 0px;
+}
+
 #archives_return, .messages_banner {
    color: var(--text);
    background-color: var(--background-elevated);
