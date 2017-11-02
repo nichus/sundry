@@ -296,6 +296,10 @@ ts-message {
    box-shadow: none !important;
 }
 
+.msg_inline_attachment_column.column_border {
+  background-color: var(--border-dim);
+}
+
 ts-message:hover {
    background: var(--background-hover) !important;
 }
