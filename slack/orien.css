@@ -500,11 +500,15 @@ ts-message a.timestamp{
 }
 
 /* orien divider */
+#msgs_div .unread_divider hr {
+  color: var(--attention); /* default is #f26130 */
+}
 #msgs_div .unread_divider .divider_label
 {
   background: var(--background);
   padding: 4px 4px;
   border-radius: 0px;
+  border: 1px solid var(--attention);
   margin: 0px 11px -13px 0px;
 }
 
