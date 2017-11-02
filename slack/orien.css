@@ -499,9 +499,18 @@ ts-message a.timestamp{
   color: #fff !important;
 }
 
+/* orien divider */
+#msgs_div .unread_divider .divider_label
+{
+  background: var(--background);
+  padding: 4px 4px;
+  border-radius: 0px;
+  margin: 0px 11px -13px 0px;
+}
+
 #msgs_div .unread_divider.no_unreads .divider_label
 {
- background: #000 !important;
+ background: var(--background-elevated);
  color: #aaa !important;
 }
 
