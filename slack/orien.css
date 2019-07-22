@@ -21,11 +21,12 @@ limitations under the License.
 
 :root {
    /* Modify these to change your theme colors: */
-   --primary: #09F;
    --text: #c3c4c5;
    --background: #23272a;
    --background-elevated: #2c2f33;
    --background-content: #36393e;
+   --attention: #d98719;
+   --primary: var(--attention);
 
    /* These should be less important: */
    --background-hover: rgba(255, 255, 255, 0.1);
@@ -36,7 +37,7 @@ limitations under the License.
    --border-bright: #aaa;
 
    --text-bright: #FFF;
-   --text-special: var(--primary);
+   --text-special: #08C;
 
    --scrollbar-background: #000;
    --scrollbar-border: var(--primary);
@@ -295,6 +296,10 @@ ts-message {
    box-shadow: none !important;
 }
 
+.msg_inline_attachment_column.column_border {
+  background-color: var(--border-dim);
+}
+
 ts-message:hover {
    background: var(--background-hover) !important;
 }
@@ -318,7 +323,6 @@ ts-message:hover {
 .rxn,
 #col_channels,
 #col_channels_footer,
-pre,
 ts-message .action_hover_container .btn_msg_action,
 .file_container,
 .file_container .CodeMirror .CodeMirror-code>div:before, .file_container .CodeMirror .sssh-line:before, .file_container .sssh-code .CodeMirror-code>div:before, .file_container .sssh-code .sssh-line:before,
@@ -329,9 +333,13 @@ ts-message .action_hover_container .btn_msg_action,
 .menu,
 .menu #menu_items_scroller,
 .btn, .btn_outline {
-  background: var(--background-elevated) !important;
+  background: var(--background-content) !important;
 }
 
+/* orien attachment */
+.attachment_group .media_caret {
+  color: var(--border-dim);
+}
 
 #flex_contents .heading,
 #flex_contents .heading a,
@@ -344,7 +352,7 @@ ts-message .action_hover_container .btn_msg_action,
 
 pre,
 ts-message .action_hover_container .btn_msg_action,
-.file_container .CodeMirror .CodeMirror-code>div pre, .file_container .CodeMirror .sssh-line pre, .file_container .sssh-code .CodeMirror-code>div pre, .file_container .sssh-code .sssh-line pre,
+.file_container .CodeMirror .CodeMirror-code>div pre, .file_container .CodeMirror .CodeMirror-code>div, .file_container .CodeMirror .sssh-line pre, .file_container .sssh-code .CodeMirror-code>div pre, .file_container .sssh-code .CodeMirror-code>div, .file_container .sssh-code .sssh-line pre,
 .search_message_result .search_message_result_meta a,
 .search_message_result .search_message_result_meta .date_links a,
 .flexpane_redesign #flex_contents .heading_text,
@@ -354,6 +362,7 @@ ts-message .action_hover_container .btn_msg_action,
 .btn, .btn_outline, .menu {
   color: var(--text) !important;
   border-color: var(--border-dim) !important;
+  background-color: var(--background);
 }
 
 .btn:hover:after {
@@ -410,12 +419,15 @@ ts-message .action_hover_container .btn_msg_action,
 
 .feature_name_tagging_client ts-message .mention, ts-message .mention,
 span.match {
-  border: 1px solid var(--border-bright) !important;
+  border: 1px solid var(--attention) !important;
   background-color: var(--background-elevated) !important;
   font-weight: bold;
+  /*
   padding: 2px 4px;
   margin: 2px;
   border-radius: 10px;
+  orien
+  */
 }
 
 .mention > .mention {
@@ -491,10 +503,25 @@ ts-message a.timestamp{
   color: #fff !important;
 }
 
+/* orien divider */
+#msgs_div .unread_divider hr {
+  border-color: var(--attention); /* default is #f26130 */
+}
+#msgs_div .unread_divider .divider_label
+{
+  background: var(--background);
+  padding: 4px 4px;
+  border-radius: 0px;
+  border: 1px solid var(--attention);
+  margin: -1px 11px -13px 0px;
+}
+
 #msgs_div .unread_divider.no_unreads .divider_label
 {
- background: #000 !important;
+ background: var(--background-elevated);
  color: #aaa !important;
+ border: none;
+ margin-top: 0px;
 }
 
 #msgs_div .unread_divider.no_unreads hr{
@@ -741,6 +768,20 @@ ts-message .reply_bar:hover {
 .star_item,
 .current_status_input_for_team_menu .current_status_presets {
    border-color: var(--border-dim);
+}
+
+/* orien : HERE */
+#messages_unread_status {
+  border: 1px solid var(--attention);
+  background-color: var(--background);
+  border-radius: 0px;
+  height: 25px;
+}
+#messages_unread_status:hover, #messages_unread_status:hover .clear_unread_messages {
+  background-color: var(--background-elevated);
+}
+#messages_unread_status .clear_unread_messages {
+  border-left: none;
 }
 
 #archives_return, .messages_banner {
