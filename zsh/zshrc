@@ -1,21 +1,45 @@
+PATH=$PATH:${HOME}/bin
+
+HIST_STAMPS="yyyy-mm-dd"
+export HISTORY_IGNORE="(ls|cd|cd -|pwd|exit|date|.* --help)"
+export HISTFILE="$ZDOTDIR/.zsh_history"
+
+export ZSH_TMUX_AUTOSTART=true
+
+# For homebrew MacOSX
+#export ZPLUG_HOME=/usr/local/opt/zplug
+#source $ZPLUG_HOME/init.zsh
+# For local manual installs
 source ~/.zplug/init.zsh
 
-# plugins=(ansible git sudo systemd terraform themes vagrant vi-mode web-search zsh_reload wod)
-# plugins+=todo
-#   plugins+=tmux
+alias pip=pip3
 
-export AUTOSWITCH_DEFAULT_PYTHON="/usr/bin/python3"
+export AUTOSWITCH_DEFAULT_PYTHON=$(which python3)
 
+# Code to maintain pagent connections to tmux through link drops
+#SOCK="/tmp/ssh-agent-$USER-tmux"
+#if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]; then
+#  rm -f $SOCK
+#  ln -sf $SSH_AUTH_SOCK $SOCK
+#  SSH_AUTH_SOCK=$SOCK
+#fi
+
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
+zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
-zplug "tcnksm/docker-alias", use:zshrc
-zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
+zplug "lib/history", from:oh-my-zsh
+zplug "lib/termsupport", from:oh-my-zsh
 
+zplug "tcnksm/docker-alias", use:zshrc
 zplug "b4b4r07/httpstat", as:command, use:'(*).sh', rename-to:'$1'
 zplug "drwetter/testssl.sh", as:command, use:'(*).sh', rename-to:'$1'
+zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 
+#zplug "nichus/zsh-tmux-multisession"
+zplug "nichus/zsh-todotxt"
 zplug "nichus/qi3ber2", as:theme
 
 zplug "zsh-users/zsh-completions"
@@ -23,13 +47,26 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "zplug/zplug", hook-build: "zplug --self-manage"
 
-if ! zplug check; then
-  printf "zplug Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
-fi
+zplug check || zplug install
 
 zplug load
 
-PATH=$PATH:${HOME}/bin
+setopt no_share_history
+setopt no_hist_verify
+
+bindkey '^U' backward-kill-line
+bindkey '^K' kill-line
+bindkey '^Y' yank
+
+function git-parent-branch {
+  git show-branch -a \
+    | grep '\*' \
+    | grep -v `git-rev-parse --abbrev-ref HEAD` \
+    | head -n1 \
+    | sed 's/.*\[\(.*\)\].*/\1/' \
+    | sed 's/[\^~].*//'
+}
+alias gpb git-parent-branch
+
+#export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#gpgconf --launch gpg-agent
