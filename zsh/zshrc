@@ -69,7 +69,7 @@ function git-parent-branch {
     | sed 's/.*\[\(.*\)\].*/\1/' \
     | sed 's/[\^~].*//'
 }
-alias gpb git-parent-branch
+alias gpb=git-parent-branch
 
 #export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 #gpgconf --launch gpg-agent
