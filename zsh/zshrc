@@ -28,7 +28,8 @@ export AUTOSWITCH_DEFAULT_PYTHON=$(which python3)
 #fi
 
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-completions"
+#zplug "zsh-users/zsh-completions"
+zplug "marlonrichert/zsh-autocomplete"
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
@@ -45,7 +46,6 @@ zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 zplug "nichus/zsh-todotxt"
 zplug "nichus/qi3ber2", as:theme
 
-zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "zplug/zplug", hook-build: "zplug --self-manage"
