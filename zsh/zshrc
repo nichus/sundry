@@ -1,4 +1,4 @@
-PATH=$PATH:${HOME}/bin
+PATH=$PATH:${HOME}/bin:${HOME}/.local/bin
 
 HIST_STAMPS="yyyy-mm-dd"
 export HISTORY_IGNORE="(ls|cd|cd -|pwd|exit|date|.* --help)"
@@ -9,6 +9,9 @@ export ZSH_TMUX_AUTOSTART=true
 if [ -e ${HOME}/.zplug/init.zsh ]; then
   # For local manual installs
   source ~/.zplug/init.zsh
+elif [ -e /usr/share/zplug/init.zsh ]; then
+  # For system-wide installs
+  source /usr/share/zplug/init.zsh
 elif [ -e /usr/local/opt/zplug/init.zsh ]; then
   # For homebrew MacOSX
   export ZPLUG_HOME=/usr/local/opt/zplug
