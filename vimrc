@@ -14,13 +14,16 @@
 " * https://github.com/scrooloose/syntastic
 " * https://github.com/hashivim/vim-terraform.git
 " * https://github.com/tangledhelix/vim-kickstart.git
+" * git@github.com:robbles/logstash.vim.git
 " * git@github.com:yorokobi/vim-splunk.git
 "
 " Pathogen colorschemes used: (vimcolors.com for more)
 " * https://github.com/Marfisc/vorange.git
+" * https://github.com/xero/blaquemagick.vim.git
 " * https://github.com/jnurmine/Zenburn.git
 " * https://github.com/sjl/badwolf.git
 " * https://github.com/sheerun/vim-wombat-scheme.git
+" * https://github.com/dsolstad/vim-wombat256i.git
 " * git://github.com/altercation/vim-colors-solarized.git
 " * https://github.com/YorickPeterse/happy_hacking.vim.git
 " * https://github.com/owickstrom/vim-colors-paramount.git
@@ -58,6 +61,8 @@ let g:airline_powerline_fonts = 1
 "let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 let g:ansible_attribute_highlight = "ab"
+
+let g:syntastic_logstash_checkers = ['eslint']
 
 if &diff
 else
