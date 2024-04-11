@@ -1,47 +1,51 @@
-"execute pathogen#infect()
+" Initialize vim-plug <https://github.com/junegunn/vim-plug>
 
-" Pathogen modules used:
-" * git://github.com/tpope/vim-fugitive.git
-" * git://github.com/tpope/vim-git.git
-" * https://github.com/tpope/vim-sensible.git
-" * https://github.com/rust-lang/rust.vim.git
-" * https://github.com/pearofducks/ansible-vim.git
-" * https://github.com/airblade/vim-gitgutter
-" * https://github.com/bling/vim-airline
-" * https://github.com/vim-airline/vim-airline-themes
-" * https://github.com/pangloss/vim-javascript
-" * https://github.com/tpope/vim-surround
-" * https://github.com/scrooloose/syntastic
-" * https://github.com/hashivim/vim-terraform.git
-" * https://github.com/tangledhelix/vim-kickstart.git
-" * git@github.com:robbles/logstash.vim.git
-" * git@github.com:yorokobi/vim-splunk.git
-"
-" Pathogen colorschemes used: (vimcolors.com for more)
-" * https://github.com/Marfisc/vorange.git
-" * https://github.com/xero/blaquemagick.vim.git
-" * https://github.com/jnurmine/Zenburn.git
-" * https://github.com/sjl/badwolf.git
-" * https://github.com/sheerun/vim-wombat-scheme.git
-" * https://github.com/dsolstad/vim-wombat256i.git
-" * git://github.com/altercation/vim-colors-solarized.git
-" * https://github.com/YorickPeterse/happy_hacking.vim.git
-" * https://github.com/owickstrom/vim-colors-paramount.git
-" * https://github.com/pbrisbin/vim-colors-off.git
-" * https://github.com/kristijanhusak/vim-hybrid-material.git
-" * https://github.com/ltlollo/diokai.git
+call plug#begin()
+" General usage plugins
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-sensible'
+Plug 'rust-lang/rust.vim'
+Plug 'pearofducks/ansible-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/syntastic'
+Plug 'hashivim/vim-terraform'
+Plug 'tangledhelix/vim-kickstart'
+Plug 'robbles/logstash.vim'
+Plug 'yorokobi/vim-splunk'
 
-syntax on
-filetype plugin indent on
+" Colorschemes
+"Plug 'Marfisc/vorange'
+Plug 'xero/blaquemagick.vim'
+"Plug 'jnurmine/Zenburn'
+"Plug 'sjl/badwolf'
+"Plug 'sheerun/vim-wombat-scheme'
+"Plug 'dsolstad/vim-wombat256i'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'YorickPeterse/happy_hacking.vim'
+"Plug 'owickstrom/vim-colors-paramount'
+"Plug 'pbrisbin/vim-colors-off'
+"Plug 'kristijanhusak/vim-hybrid-material'
+"Plug 'ltlollo/diokai'
+call plug#end()
 
-set softtabstop=2
-set shiftwidth=2
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
 set number
 "set smartindent
-set expandtab
+"set expandtab
 set cindent
 set list
-set listchars=tab:▻\ ,trail:◈
+set listchars=tab:»\ ,trail:·
+"set listchars=tab:├\─,trail:▯
+
+" Attempt to disable vim/mouse interactions
+set mouse=
 
 set foldmethod=marker
 
@@ -55,14 +59,18 @@ set comments+=fb:*
 
 "set background=dark
 "let g:badwolf_darkgutter=1
-colorscheme happy_hacking
+"colorscheme happy_hacking
+colorscheme blaquemagick
 
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 let g:ansible_attribute_highlight = "ab"
 
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_logstash_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 if &diff
 else
