@@ -1,8 +1,22 @@
 PATH=$PATH:${HOME}/bin:${HOME}/.local/bin
 
-HIST_STAMPS="yyyy-mm-dd"
+# Set Vars for ssh via gpg
+export GPG_TTY=$(tty)
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+#gpgconf --launch gpg-agent
+
+# Settings for the *omz/lib/history*
+#
+# Set the timestamp format for history for ISO format
+export HIST_STAMPS="yyyy-mm-dd"
+# Don't bother storing these commands in history
 export HISTORY_IGNORE="(ls|cd|cd -|pwd|exit|date|.* --help)"
+# Set the location for the zsh_history file to be inside our .zsh foler
 export HISTFILE="$ZDOTDIR/.zsh_history"
+# Keep this many history events in per-shell memory
+export HISTSIZE=100000
+# Keep this many history events in the log file
+export SAVEHIST=50000
 
 export ZSH_TMUX_AUTOSTART=true
 
@@ -19,8 +33,18 @@ elif [ -e /usr/local/opt/zplug/init.zsh ]; then
 fi
 
 alias pip=pip3
+alias vim="nvim"
+alias vi="nvim"
+alias vimdiff="nvim -d"
+alias dlports="docker container ls --format table '{{.ID}}\t{{.Names}}\t{{.Ports}} -a'"
 
+export EDITOR=nvim
+# Prefer case sensitive autocomplete
+export CASE_SENSITIVE="true"
+# Default all my venv to python3
 export AUTOSWITCH_DEFAULT_PYTHON=$(which python3)
+# My prompt reflects my venv automatically, don't pollute it by default
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Code to maintain pagent connections to tmux through link drops
 #SOCK="/tmp/ssh-agent-$USER-tmux"
@@ -30,26 +54,32 @@ export AUTOSWITCH_DEFAULT_PYTHON=$(which python3)
 #  SSH_AUTH_SOCK=$SOCK
 #fi
 
-zplug "zsh-users/zsh-history-substring-search"
 #zplug "zsh-users/zsh-completions"
 zplug "marlonrichert/zsh-autocomplete"
-zplug "plugins/vi-mode", from:oh-my-zsh
+
+zplug "plugins/docker-compose", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/vagrant", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/vagrant", from:oh-my-zsh
 zplug "lib/termsupport", from:oh-my-zsh
 
 zplug "tcnksm/docker-alias", use:zshrc
+
+zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
+#zplug "jqlang/jq", from: 
+
 zplug "b4b4r07/httpstat", as:command, use:'(*).sh', rename-to:'$1'
 zplug "drwetter/testssl.sh", as:command, use:'(*).sh', rename-to:'$1'
-zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
+#zplug "drwetter/testssl.sh", as:command, use: 'testssl.sh'
 
 #zplug "nichus/zsh-tmux-multisession"
 zplug "nichus/zsh-todotxt"
 zplug "nichus/qi3ber2", as:theme
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer: 2
 
 zplug "zplug/zplug", hook-build: "zplug --self-manage"
 
@@ -57,8 +87,13 @@ zplug check || zplug install
 
 zplug load
 
-setopt no_share_history
-setopt no_hist_verify
+unsetopt share_history
+unsetopt hist_verify
+setopt  hist_ignore_all_dups
+setopt  hist_find_no_dups
+
+source <(kubectl completion zsh)
+eval "$(zoxide init zsh)"
 
 bindkey '^U' backward-kill-line
 bindkey '^K' kill-line
@@ -73,8 +108,3 @@ function git-parent-branch {
     | sed 's/[\^~].*//'
 }
 alias gpb=git-parent-branch
-
-#export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-#gpgconf --launch gpg-agent
-
-eval "$(zoxide init zsh)"
