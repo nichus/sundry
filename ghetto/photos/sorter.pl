@@ -8,6 +8,7 @@ use Image::ExifTool;
 use POSIX qw(strftime);
 use File::Copy;
 use File::Basename;
+use File::Path qw(make_path);
 use Time::Local qw(timelocal);
 
 my @stat;
@@ -25,7 +26,7 @@ my $info    = $exifTool->ImageInfo($file);
 my $ctime   = &sane_time(&find_time($info),$file);
 my @time    = localtime($ctime);
 
-my $folder  = strftime("%Y-%m-%d",@time);
+my $folder  = strftime("%Y/%m/%Y-%m-%d",@time);
 my $touch   = strftime("%Y-%m-%d %H:%M:%S",@time);
 my $target  = "$ArchiveDir/$folder";
 
@@ -41,7 +42,8 @@ my $basename = basename($file);
 
 if (not -d $target) {
   print "Created directory for pictures: $target\n";
-  mkdir $target;
+  make_path($target);
+  #mkdir $target;
 }
 
 my $destination = "$target/$basename";
@@ -50,20 +52,32 @@ if (&same_file($file,$destination)) {
   exit 1;
 }
 
-if (not -f $destination) {
-  print "$file -> $destination\n";
+my $dsize=0;
+if (-f $destination) {
+  #  print "$destination exists";
+  $dsize = -s $destination;
+  if ($dsize != 0) {
+    my $ohex = &digest($file);
+    if ($ohex eq &digest($destination)) {
+      printf " d -> %s -- removing locally\n", $destination;
+      unlink $file;
+    } else {
+      printf " w !! %s != %s, rename required\n", $destination, $file;
+      # print " -- files are different, '$file' needs a rename\n";
+    }
+  } else {
+    printf " z -> %s\n", $destination;
+    # print "$file -> $destination\n";
+    copy($file, $destination);
+    no warnings qw(uninitialized);
+    utime undef, $ctime, $destination;
+  }
+} else {
+  printf " c -> %s\n", $destination;
+  # print "$file -> $destination\n";
   copy($file, $destination);
   no warnings qw(uninitialized);
   utime undef, $ctime, $destination;
-} else {
-  print "$destination exists";
-  my $ohex = &digest($file);
-  if ($ohex eq &digest($destination)) {
-    print " -- duplicate, removing $file\n";
-    unlink $file;
-  } else {
-    print " -- files are different, '$file' needs a rename\n";
-  }
 }
 
 sub same_file() {
@@ -71,7 +85,7 @@ sub same_file() {
   my ($sdev,$sino,undef) = stat($source);
   my ($ddev,$dino,undef) = stat($dest);
 
-  if (($sdev == $ddev) and ($sino == $dino)) {
+  if ( $ddev and ($sdev == $ddev) and ($sino == $dino)) {
     return 1;
   }
   return 0;
@@ -113,6 +127,9 @@ sub sane_time() {
     $sec = $3;
     $file =~ s/\d{2}\.?\d{2}\.?\d{2}//;
   }
+
+  print "$file -> $ts -> $year/$month/$date $hour:$min:$sec\n";
+  exit(1);
 
   return timelocal($sec,$min,$hour,$date,$month,$year,0,0,0);
 }
